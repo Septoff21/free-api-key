@@ -1,0 +1,62 @@
+# ─── Environment / Secrets ────────────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+*.key
+secrets/
+
+# ─── Node ─────────────────────────────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-error.log
+yarn-debug.log*
+.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# ─── Test / Build Artifacts ───────────────────────────────────────────────────
+scripts/test-output/
+dist/
+*.tmp
+*.temp
+
+# ─── OS ───────────────────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ─── Editor ───────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.c9/
+
+# ─── Claude Code ──────────────────────────────────────────────────────────────
+.claude/settings.local.json
+
+# ─── Python (for LiteLLM etc.) ────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+env/
+
+# ─── Logs ─────────────────────────────────────────────────────────────────────
+*.log
+logs/
+
+# ─── Health / Data (generated, tracked separately) ───────────────────────────
+# data/health/ is tracked (health logs committed by CI)
+# data/evidence/ is tracked (human-written evidence files)
+# Nothing to ignore here; keep explicit
