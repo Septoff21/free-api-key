@@ -5,6 +5,10 @@
 
 ---
 
+## Phase 02 — Provider Data — 2026-04-27 — claude-sonnet-4-7
+
+All 8 providers filled in `providers.json` (version 0.2.0): OpenRouter, Gemini, Groq, Cerebras, GitHub Models, Mistral, Cloudflare Workers AI, Ollama. Every provider has rate limits, auth config, free-tier models with full capability matrix fields, `capabilities_summary`, privacy assessment (trains_on_data/logs_prompts/human_review), and `checker` endpoint config. Evidence files written to `data/evidence/<provider>/limits.md` + `privacy.md` for all 8 providers. Schema validation passes (AJV strict:false, all 8 providers ✓). Notable: Gemini free tier trains on user data; all others do not. Cloudflare is the only provider with image_gen + audio_in. Ollama is fully local (gold standard privacy).
+
 ## Phase 01 — Foundation — 2026-04-27 — sonnet-4.6
 
 All 11 deliverable files created and committed (bbcdbd8). JSON valid, git clean, cross-links verified, no stray files. Schema includes full capability fields (modalities_in/out, tool_use, reasoning, speed_tier, capabilities_summary). `.claude/settings.local.json` correctly excluded via .gitignore.

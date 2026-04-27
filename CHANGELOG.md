@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Phase 02** — Provider data + evidence:
+  - `providers.json` — complete data for all 8 providers (OpenRouter, Gemini, Groq, Cerebras, GitHub Models, Mistral, Cloudflare Workers AI, Ollama). Each provider includes: rate limits, auth config, free-tier models with full capability fields (`modalities_in/out`, `tool_use`, `reasoning`, `speed_tier`, `best_for`, `json_mode`, `streaming`), `capabilities_summary`, `privacy` assessment, and `checker` config for key validation scripts.
+  - `data/evidence/openrouter/` — rate limits + privacy evidence files
+  - `data/evidence/gemini/` — rate limits + privacy evidence files (⚠️ trains on free-tier data)
+  - `data/evidence/groq/` — rate limits + privacy evidence files
+  - `data/evidence/cerebras/` — rate limits + privacy evidence files
+  - `data/evidence/github-models/` — rate limits + privacy evidence files
+  - `data/evidence/mistral/` — rate limits + privacy evidence files (GDPR, opt-in only)
+  - `data/evidence/cloudflare/` — rate limits + privacy evidence files
+  - `data/evidence/ollama/` — local / no-limits + privacy evidence files (gold standard)
+  - Bumped `providers.json` version to `0.2.0`
+
 - **Phase 01** — Repository foundation:
   - `README.md` (Chinese, canonical) + `README.en.md` (English mirror) with full project structure, capability matrix placeholders, provider table placeholders
   - `CHANGELOG.md` (this file) in Keep a Changelog format
