@@ -5,6 +5,10 @@
 
 ---
 
+## Phase 01 — Foundation — 2026-04-27 — sonnet-4.6
+
+All 11 deliverable files created and committed (bbcdbd8). JSON valid, git clean, cross-links verified, no stray files. Schema includes full capability fields (modalities_in/out, tool_use, reasoning, speed_tier, capabilities_summary). `.claude/settings.local.json` correctly excluded via .gitignore.
+
 ## Phase 00 — Context — 2026-04-27 — opus-4.7
 
 Created `PHASES.md` and the full `phases/` plan (00-09). No code or content yet; this is planning-only.
