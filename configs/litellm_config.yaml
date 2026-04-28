@@ -1,0 +1,147 @@
+# LiteLLM Router Configuration
+# Usage: litellm --config configs/litellm_config.yaml --port 4000
+# Docs:  https://docs.litellm.ai/docs/routing
+
+model_list:
+  # ── High-throughput / fast chat ───────────────────────────────────────────
+  - model_name: fast-chat
+    litellm_params:
+      model: groq/llama-3.1-8b-instant
+      api_key: os.environ/GROQ_API_KEY
+      api_base: https://api.groq.com/openai/v1
+    model_info:
+      rpm: 30
+      tpm: 6000
+      rpd: 14400
+
+  - model_name: fast-chat
+    litellm_params:
+      model: cerebras/llama3.1-8b
+      api_key: os.environ/CEREBRAS_API_KEY
+      api_base: https://api.cerebras.ai/v1
+    model_info:
+      rpm: 30
+      tpm: 60000
+      rpd: 14400
+
+  - model_name: fast-chat    # local fallback, unlimited
+    litellm_params:
+      model: ollama/qwen2.5:7b
+      api_base: http://localhost:11434
+      api_key: ollama
+
+  # ── Quality / large models ─────────────────────────────────────────────────
+  - model_name: quality-chat
+    litellm_params:
+      model: groq/llama-3.3-70b-versatile
+      api_key: os.environ/GROQ_API_KEY
+    model_info:
+      rpm: 30
+      rpd: 1000
+
+  - model_name: quality-chat
+    litellm_params:
+      model: cerebras/llama3.3-70b
+      api_key: os.environ/CEREBRAS_API_KEY
+      api_base: https://api.cerebras.ai/v1
+    model_info:
+      rpm: 30
+      rpd: 14400
+
+  - model_name: quality-chat
+    litellm_params:
+      model: openrouter/meta-llama/llama-3.3-70b-instruct:free
+      api_key: os.environ/OPENROUTER_API_KEY
+    model_info:
+      rpm: 20
+      rpd: 1000  # with $10 balance
+
+  - model_name: quality-chat
+    litellm_params:
+      model: ollama/llama3.3:70b
+      api_base: http://localhost:11434
+      api_key: ollama
+
+  # ── Vision ────────────────────────────────────────────────────────────────
+  - model_name: vision
+    litellm_params:
+      model: gemini/gemini-2.0-flash
+      api_key: os.environ/GEMINI_API_KEY
+    model_info:
+      rpm: 15
+      rpd: 1500
+
+  - model_name: vision
+    litellm_params:
+      model: gemini/gemini-2.5-flash
+      api_key: os.environ/GEMINI_API_KEY
+    model_info:
+      rpm: 10
+      rpd: 250
+
+  - model_name: vision
+    litellm_params:
+      model: openai/gpt-4o   # via GitHub Models
+      api_key: os.environ/GITHUB_TOKEN
+      api_base: https://models.github.ai/inference
+    model_info:
+      rpm: 10
+      rpd: 50
+
+  # ── Code specialized ──────────────────────────────────────────────────────
+  - model_name: code
+    litellm_params:
+      model: mistral/codestral-latest
+      api_key: os.environ/MISTRAL_API_KEY
+      api_base: https://codestral.mistral.ai/v1
+    model_info:
+      rpm: 2
+
+  - model_name: code
+    litellm_params:
+      model: ollama/qwen2.5-coder:7b
+      api_base: http://localhost:11434
+      api_key: ollama
+
+  # ── Reasoning ─────────────────────────────────────────────────────────────
+  - model_name: reasoning
+    litellm_params:
+      model: gemini/gemini-2.5-pro
+      api_key: os.environ/GEMINI_API_KEY
+    model_info:
+      rpm: 5
+      rpd: 100
+
+  - model_name: reasoning
+    litellm_params:
+      model: groq/deepseek-r1-distill-llama-70b
+      api_key: os.environ/GROQ_API_KEY
+    model_info:
+      rpm: 30
+      rpd: 1000
+
+  - model_name: reasoning
+    litellm_params:
+      model: ollama/deepseek-r1:8b
+      api_base: http://localhost:11434
+      api_key: ollama
+
+  # ── Audio transcription ────────────────────────────────────────────────────
+  - model_name: transcription
+    litellm_params:
+      model: groq/whisper-large-v3
+      api_key: os.environ/GROQ_API_KEY
+    model_info:
+      rpm: 20
+      rpd: 2000
+
+router_settings:
+  routing_strategy: least-busy
+  num_retries: 3
+  retry_after: 5
+  allowed_fails: 2
+  cooldown_time: 60
+  fallbacks:
+    - quality-chat: ["fast-chat"]
+    - vision: ["fast-chat"]
+    - reasoning: ["quality-chat", "fast-chat"]
