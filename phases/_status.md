@@ -5,6 +5,22 @@
 
 ---
 
+## Phase 08 — Recipes — 2026-04-28 — claude-sonnet-4-7
+
+5 scenario recipes committed: agent-loop (ReAct tool-use loop with provider swap), vision-analyze (universal image helper + OCR/chart/screenshot presets), litellm-router (YAML config + Python Router API + proxy mode), image-generation (Cloudflare FLUX+SDXL + batch + neuron budget), quota-maximizer (priority routing + semantic cache + batch merging). LiteLLM config covers 6 model aliases with fallback chains.
+
+## Phase 06+11 — Privacy Matrix + Capability Matrices — 2026-04-28 — claude-sonnet-4-7
+
+Privacy matrix: full provider comparison table, per-provider deep-dive, scenario guides, best practices with code. 7 capability matrices: vision-in, image-gen, agent-tool-use (8 framework compat table), long-context (hierarchical summary pattern), code (FIM + editor config), reasoning (CoT parsing), other-modalities (Groq Whisper SRT + Gemini video). Combined quick-ref index across all dimensions.
+
+## Phase 05 — check-keys.mjs — 2026-04-28 — claude-sonnet-4-7
+
+One-click key checker: scripts/check-keys.mjs (coloured output ✓/–/✗, --json mode for CI, --help, auto .env load), scripts/lib/probe.mjs (per-provider HTTP probes, 10s timeout, rate-limit header parsing, Ollama model count). All 8 providers. npm run check shortcut added.
+
+## Phase 03+04 — Bilingual Provider Docs — 2026-04-28 — claude-sonnet-4-7
+
+16 provider docs (8 zh canonical + 8 en mirrors). Each covers: overview, who-it's-for, 3-language usage (curl/Python/Node), free model table, rate limits, privacy matrix, common errors, client links, 5 tips. Gemini privacy warning prominent; Cloudflare image-gen highlighted; Ollama full local stack with hermes3+llava.
+
 ## Phase 02 — Provider Data — 2026-04-27 — claude-sonnet-4-7
 
 All 8 providers filled in `providers.json` (version 0.2.0): OpenRouter, Gemini, Groq, Cerebras, GitHub Models, Mistral, Cloudflare Workers AI, Ollama. Every provider has rate limits, auth config, free-tier models with full capability matrix fields, `capabilities_summary`, privacy assessment (trains_on_data/logs_prompts/human_review), and `checker` endpoint config. Evidence files written to `data/evidence/<provider>/limits.md` + `privacy.md` for all 8 providers. Schema validation passes (AJV strict:false, all 8 providers ✓). Notable: Gemini free tier trains on user data; all others do not. Cloudflare is the only provider with image_gen + audio_in. Ollama is fully local (gold standard privacy).
