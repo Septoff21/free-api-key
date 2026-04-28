@@ -1,4 +1,16 @@
 {
+  "name": "free-api-key",
+  "version": "0.2.0",
+  "description": "Free LLM API key guide & one-click key checker for 8 providers",
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/check-keys.mjs",
+    "check:json": "node scripts/check-keys.mjs --json",
+    "validate": "node -e \"const Ajv=require('ajv');const fs=require('fs');const ajv=new Ajv({strict:false});const s=JSON.parse(fs.readFileSync('providers.schema.json','utf8'));const d=JSON.parse(fs.readFileSync('providers.json','utf8'));const v=ajv.compile(s);let ok=true;d.providers.forEach(p=>{if(!v(p)){ok=false;console.error('INVALID:',p.key,v.errors);}});if(ok)console.log('All providers valid ✓');\""
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "devDependencies": {
     "ajv": "^8.20.0"
   }
