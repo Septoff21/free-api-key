@@ -6,6 +6,9 @@
   "scripts": {
     "check": "node scripts/check-keys.mjs",
     "check:json": "node scripts/check-keys.mjs --json",
+    "test:real": "node scripts/test-real-keys.mjs --append-logs",
+    "test:dry": "node scripts/test-real-keys.mjs --dry-run",
+    "badge": "node scripts/generate-status-badge.mjs",
     "validate": "node -e \"const Ajv=require('ajv');const fs=require('fs');const ajv=new Ajv({strict:false});const s=JSON.parse(fs.readFileSync('providers.schema.json','utf8'));const d=JSON.parse(fs.readFileSync('providers.json','utf8'));const v=ajv.compile(s);let ok=true;d.providers.forEach(p=>{if(!v(p)){ok=false;console.error('INVALID:',p.key,v.errors);}});if(ok)console.log('All providers valid ✓');\""
   },
   "engines": {

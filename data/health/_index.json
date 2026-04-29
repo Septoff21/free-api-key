@@ -1,0 +1,83 @@
+{
+  "generated_at": "2026-04-29T05:58:39.055Z",
+  "summary": {
+    "ok": 0,
+    "failed": 0,
+    "skipped": 8,
+    "total": 8
+  },
+  "providers": {
+    "openrouter": {
+      "ok": null,
+      "latency_ms": 0,
+      "status_code": null,
+      "error_class": null,
+      "skipped": true,
+      "probe_kind": "minimal_chat",
+      "last_run": "2026-04-29T05:58:39.054Z"
+    },
+    "gemini": {
+      "ok": null,
+      "latency_ms": 0,
+      "status_code": null,
+      "error_class": null,
+      "skipped": true,
+      "probe_kind": "minimal_chat",
+      "last_run": "2026-04-29T05:58:39.054Z"
+    },
+    "groq": {
+      "ok": null,
+      "latency_ms": 0,
+      "status_code": null,
+      "error_class": null,
+      "skipped": true,
+      "probe_kind": "minimal_chat",
+      "last_run": "2026-04-29T05:58:39.054Z"
+    },
+    "cerebras": {
+      "ok": null,
+      "latency_ms": 0,
+      "status_code": null,
+      "error_class": null,
+      "skipped": true,
+      "probe_kind": "minimal_chat",
+      "last_run": "2026-04-29T05:58:39.054Z"
+    },
+    "github_models": {
+      "ok": null,
+      "latency_ms": 0,
+      "status_code": null,
+      "error_class": null,
+      "skipped": true,
+      "probe_kind": "minimal_chat",
+      "last_run": "2026-04-29T05:58:39.055Z"
+    },
+    "mistral": {
+      "ok": null,
+      "latency_ms": 0,
+      "status_code": null,
+      "error_class": null,
+      "skipped": true,
+      "probe_kind": "minimal_chat",
+      "last_run": "2026-04-29T05:58:39.055Z"
+    },
+    "cloudflare": {
+      "ok": null,
+      "latency_ms": 0,
+      "status_code": null,
+      "error_class": null,
+      "skipped": true,
+      "probe_kind": "minimal_chat",
+      "last_run": "2026-04-29T05:58:39.055Z"
+    },
+    "ollama": {
+      "ok": null,
+      "latency_ms": 0,
+      "status_code": null,
+      "error_class": null,
+      "skipped": true,
+      "probe_kind": "local_tags",
+      "last_run": "2026-04-29T05:58:39.055Z"
+    }
+  }
+}

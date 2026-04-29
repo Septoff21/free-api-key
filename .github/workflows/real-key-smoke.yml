@@ -1,0 +1,128 @@
+name: Real Key Smoke Test
+
+# Probe each provider with a 1-token request weekly.
+# Hard constraints: max 1 token/probe, no key/response logging,
+# missing keys skipped gracefully (exit 0), no retries.
+
+on:
+  schedule:
+    - cron: "0 9 * * 1"   # Every Monday at 09:00 UTC
+  workflow_dispatch:        # Manual trigger (maintainer only)
+
+# Prevent concurrent runs — two simultaneous smoke tests would double-consume quota.
+concurrency:
+  group: real-key-smoke
+  cancel-in-progress: false
+
+permissions:
+  contents: write   # To commit health logs + badge
+  issues: write     # To open failure issue
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    # Block fork PRs from accessing repository secrets.
+    # GitHub already denies secrets to fork PRs, but this extra guard
+    # prevents supply-chain attacks where a fork workflow triggers on the
+    # upstream repo's context.
+    if: github.repository == github.event.repository.full_name
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Each key is injected from a repository secret.
+      # Secret name convention: <PROVIDER>_TEST_KEY (not _API_KEY, to
+      # distinguish test-only keys from docs examples).
+      # Missing secrets resolve to empty strings → probe marks as "skipped".
+      - name: Run probes
+        id: probe
+        env:
+          OPENROUTER_API_KEY:       ${{ secrets.OPENROUTER_TEST_KEY }}
+          GEMINI_API_KEY:           ${{ secrets.GEMINI_TEST_KEY }}
+          GROQ_API_KEY:             ${{ secrets.GROQ_TEST_KEY }}
+          CEREBRAS_API_KEY:         ${{ secrets.CEREBRAS_TEST_KEY }}
+          GITHUB_TOKEN:             ${{ secrets.GITHUB_MODELS_TEST_TOKEN }}
+          MISTRAL_API_KEY:          ${{ secrets.MISTRAL_TEST_KEY }}
+          CLOUDFLARE_ACCOUNT_ID:    ${{ secrets.CLOUDFLARE_TEST_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN:     ${{ secrets.CLOUDFLARE_TEST_API_TOKEN }}
+        run: |
+          node scripts/test-real-keys.mjs --append-logs --output-index data/health/_index.json
+          echo "failed_count=$(node -e "
+            const d = JSON.parse(require('fs').readFileSync('data/health/_index.json'));
+            console.log(d.summary.failed);
+          ")" >> "$GITHUB_OUTPUT"
+
+      - name: Generate status badge
+        run: node scripts/generate-status-badge.mjs
+
+      - name: Commit health logs and badge
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/health/
+          git diff --staged --quiet || git commit -m "chore(health): smoke run $(date -u +%Y-%m-%dT%H:%MZ) [skip ci]"
+          git push
+
+      # Open or update an existing issue when any provider fails.
+      # Only runs when failures are detected.
+      - name: Open issue on failure
+        if: steps.probe.outputs.failed_count != '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const index = JSON.parse(fs.readFileSync('data/health/_index.json', 'utf8'));
+            const failed = Object.entries(index.providers)
+              .filter(([, v]) => !v.ok && v.error_class !== null)
+              .map(([k, v]) => `- **${k}**: \`${v.error_class}\` (${v.latency_ms}ms)`)
+              .join('\n');
+
+            const body = [
+              `## Smoke Test Failure — ${index.generated_at}`,
+              '',
+              `**Summary:** ${index.summary.ok}/${index.summary.total} providers OK`,
+              '',
+              '### Failed Providers',
+              failed,
+              '',
+              '### Next Steps',
+              '1. Check the provider\'s status page',
+              '2. Verify the secret key is still valid',
+              '3. Update `providers.json` if limits/endpoints changed',
+              '',
+              `[View full health log](../../tree/main/data/health)`,
+            ].join('\n');
+
+            // Look for an existing open smoke-failure issue to update
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'smoke-failure',
+            });
+
+            if (existing.data.length > 0) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.data[0].number,
+                body,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: `[smoke] Provider failure — ${new Date().toISOString().slice(0,10)}`,
+                body,
+                labels: ['smoke-failure'],
+              });
+            }

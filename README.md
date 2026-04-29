@@ -4,7 +4,8 @@
 
 [English](./README.en.md) | **中文**
 
-<!-- TODO phase 12: 在此处插入健康状态 badge -->
+[![Providers Health](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/YOUR_USERNAME/free-api-key/main/data/health/badge.json)](docs/zh/97-status.md)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ---
 
