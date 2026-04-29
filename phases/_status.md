@@ -5,6 +5,10 @@
 
 ---
 
+## Phase 13 — VitePress Documentation Site — 2026-04-29 — claude-sonnet-4-6
+
+VitePress 1.6.4 site with bilingual i18n nav, full sidebar (providers/clients/recipes/capability/tutorials), local search (zh translations), provider cards grid (8 animated cards with tags), custom gradient theme, stats row, route maps. Files: `.vitepress/config.ts`, `theme/index.ts`, `theme/style.css`, `theme/components/ProviderCards.vue`, `index.md`, `en/index.md`, `public/logo.svg`. Build: 21s clean. GitHub Pages deploy workflow added. `npm run docs:dev/build/preview` scripts added to `package.json`.
+
 ## Phase 09 — Non-Dev Tutorials + v1.0.0 Release — 2026-04-29 — claude-sonnet-4-6
 
 3 tutorial files in for-non-devs/zh/: beginner guide (5-step, FAQ, provider picker), OpenRouter signup walkthrough, Gemini AI Studio walkthrough. 11 screenshot placeholders for maintainer. CHANGELOG moved to [1.0.0]. providers.json → 1.0.0. git tag v1.0.0.

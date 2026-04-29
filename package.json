@@ -4,6 +4,9 @@
   "description": "Free LLM API key guide & one-click key checker for 8 providers",
   "type": "module",
   "scripts": {
+    "docs:dev": "vitepress dev . --open",
+    "docs:build": "vitepress build .",
+    "docs:preview": "vitepress preview . --port 4173",
     "check": "node scripts/check-keys.mjs",
     "check:json": "node scripts/check-keys.mjs --json",
     "test:real": "node scripts/test-real-keys.mjs --append-logs",
@@ -15,6 +18,8 @@
     "node": ">=18"
   },
   "devDependencies": {
-    "ajv": "^8.20.0"
+    "ajv": "^8.20.0",
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.33"
   }
 }
