@@ -250,7 +250,7 @@ export default defineConfig({
 
     // ── Social links ─────────────────────────
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/YOUR_USERNAME/free-api-key' },
+      { icon: 'github', link: 'https://github.com/septoff21/free-api-key' },
     ],
 
     // ── Footer ───────────────────────────────
@@ -261,7 +261,7 @@ export default defineConfig({
 
     // ── Edit link ────────────────────────────
     editLink: {
-      pattern: 'https://github.com/YOUR_USERNAME/free-api-key/edit/main/:path',
+      pattern: 'https://github.com/septoff21/free-api-key/edit/main/:path',
       text: '在 GitHub 上编辑此页面',
     },
 

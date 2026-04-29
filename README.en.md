@@ -6,7 +6,7 @@
 
 **中文** | [English](./README.en.md)
 
-[![Providers Health](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/YOUR_USERNAME/free-api-key/main/data/health/badge.json)](docs/en/97-status.md)
+[![Providers Health](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/septoff21/free-api-key/main/data/health/badge.json)](docs/en/97-status.md)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ---

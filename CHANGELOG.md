@@ -98,4 +98,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `configs/.env.example` — environment variable template for all 8 providers
   - `docs/zh/` + `docs/en/` — directory stubs for bilingual documentation
 
-[1.0.0]: https://github.com/YOUR_USERNAME/free-api-key/compare/v0.1.0...v1.0.0
+[1.0.0]: https://github.com/septoff21/free-api-key/compare/v0.1.0...v1.0.0

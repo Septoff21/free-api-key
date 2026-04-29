@@ -34,7 +34,7 @@ jobs:
             --exclude "127.0.0.1" \
             --exclude "host.docker.internal" \
             --exclude "models.github.ai" \
-            --exclude "YOUR_USERNAME" \
+            --exclude "septoff21" \
             --exclude-path ".git" \
             --timeout 20 \
             --max-retries 2 \

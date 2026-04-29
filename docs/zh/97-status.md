@@ -24,9 +24,9 @@
 
 ## 状态 Badge
 
-[![Providers Health](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/YOUR_USERNAME/free-api-key/main/data/health/badge.json)](docs/zh/97-status.md)
+[![Providers Health](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/septoff21/free-api-key/main/data/health/badge.json)](docs/zh/97-status.md)
 
-> 将 `YOUR_USERNAME` 替换为你的 GitHub 用户名后，Badge 会在 README 中实时显示。
+> 将 `septoff21` 替换为你的 GitHub 用户名后，Badge 会在 README 中实时显示。
 
 ## 探针设计
 

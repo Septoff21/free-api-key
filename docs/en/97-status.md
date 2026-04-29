@@ -22,9 +22,9 @@
 
 ## Status Badge
 
-[![Providers Health](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/YOUR_USERNAME/free-api-key/main/data/health/badge.json)](97-status.md)
+[![Providers Health](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/septoff21/free-api-key/main/data/health/badge.json)](97-status.md)
 
-> Replace `YOUR_USERNAME` with your GitHub username for the badge to display live in README.
+> Replace `septoff21` with your GitHub username for the badge to display live in README.
 
 ## Probe Design
 
