@@ -1,0 +1,76 @@
+name: 客户端接入失效 / Client Integration Broken
+description: 某个客户端接入指南的步骤已失效 / A client integration guide's steps are no longer working
+labels: ["bug", "client-docs"]
+body:
+  - type: dropdown
+    id: client
+    attributes:
+      label: 客户端 / Client
+      options:
+        - opencode
+        - Cline
+        - Continue
+        - Cursor
+        - LibreChat
+        - Open WebUI
+        - Chatbox
+        - other (specify below)
+    validations:
+      required: true
+
+  - type: input
+    id: client_version
+    attributes:
+      label: 客户端版本 / Client Version
+      placeholder: "例：v0.44.2"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: provider
+    attributes:
+      label: 对接的 Provider / Provider Being Connected
+      options:
+        - openrouter
+        - gemini
+        - groq
+        - cerebras
+        - github_models
+        - mistral
+        - cloudflare
+        - ollama
+        - general (not provider-specific)
+    validations:
+      required: true
+
+  - type: textarea
+    id: broken_step
+    attributes:
+      label: 哪步失效 / Which Step is Broken
+      description: 复制文档里的步骤编号和内容，说明实际情况
+      placeholder: |
+        文档步骤 3："API Provider 选择 OpenAI Compatible"
+        实际：选项列表里没有这个选项，改为 "Custom OpenAI"
+    validations:
+      required: true
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: 临时解决方案（如有）/ Workaround (if any)
+      description: 如果你找到了替代步骤，请描述
+    validations:
+      required: false
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: 操作系统 / OS
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - iOS
+        - Android
+    validations:
+      required: true

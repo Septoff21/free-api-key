@@ -1,0 +1,79 @@
+name: 建议新增 Provider / Suggest New Provider
+description: 建议将某个新的免费 LLM API 提供商加入本项目 / Suggest adding a new free LLM API provider
+labels: ["enhancement", "new-provider"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        收录标准 / Inclusion criteria:
+        - ✅ 永久免费层（不是试用额度）/ Permanent free tier (not trial credits)
+        - ✅ 无需信用卡即可使用 / No credit card required
+        - ✅ 有稳定 API（非临时 beta）/ Stable API (not temporary beta)
+        - ✅ 合理的使用政策 / Reasonable usage policy
+
+  - type: input
+    id: provider_name
+    attributes:
+      label: Provider 名称 / Provider Name
+      placeholder: "例：Together AI"
+    validations:
+      required: true
+
+  - type: input
+    id: homepage
+    attributes:
+      label: 官网 / Homepage
+      placeholder: "https://..."
+    validations:
+      required: true
+
+  - type: input
+    id: api_docs
+    attributes:
+      label: API 文档 / API Docs URL
+      placeholder: "https://..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: free_tier
+    attributes:
+      label: 免费层详情 / Free Tier Details
+      description: RPM / RPD / TPD / 模型列表 / 是否永久免费
+      placeholder: |
+        - 免费模型：xxx
+        - RPM: 30
+        - RPD: 1000
+        - 永久免费：是/否
+    validations:
+      required: true
+
+  - type: dropdown
+    id: openai_compat
+    attributes:
+      label: OpenAI 兼容 / OpenAI Compatible
+      options:
+        - "是 / Yes"
+        - "否 / No"
+        - "部分 / Partial"
+    validations:
+      required: true
+
+  - type: textarea
+    id: privacy
+    attributes:
+      label: 隐私政策摘要 / Privacy Summary
+      description: 是否用数据训练模型？官方链接？
+      placeholder: |
+        - 是否训练数据：否
+        - 隐私政策链接：https://...
+    validations:
+      required: true
+
+  - type: textarea
+    id: why
+    attributes:
+      label: 为什么值得收录 / Why Include
+      description: 相比已有 8 家，这家有什么独特价值？
+    validations:
+      required: true

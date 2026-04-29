@@ -1,0 +1,81 @@
+name: Key Checker Smoke (Mock)
+
+# Weekly: run check-keys.mjs in dry-run mode to verify
+# the script itself hasn't broken and DNS resolves for all provider endpoints.
+# Does NOT require real API keys.
+
+on:
+  schedule:
+    - cron: "30 8 * * 1"   # Every Monday at 08:30 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  checker-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run check-keys in mock/dry-run mode
+        id: checker
+        run: |
+          # Run with no real keys — all providers will show "not configured"
+          # This validates: script loads, parses args, no syntax errors
+          node scripts/check-keys.mjs --json 2>&1 | tee /tmp/checker-output.json
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Verify DNS resolution for all provider endpoints
+        run: |
+          endpoints=(
+            "api.openrouter.ai"
+            "generativelanguage.googleapis.com"
+            "api.groq.com"
+            "api.cerebras.ai"
+            "models.github.ai"
+            "api.mistral.ai"
+            "api.cloudflare.com"
+          )
+          failed=0
+          for host in "${endpoints[@]}"; do
+            if nslookup "$host" > /dev/null 2>&1; then
+              echo "  ✓ $host resolves"
+            else
+              echo "  ✗ $host DNS FAILED"
+              failed=$((failed + 1))
+            fi
+          done
+          echo "DNS failures: $failed"
+          exit $failed
+
+      - name: Open issue if checker script is broken
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'bug',
+            });
+            const title = `[checker] check-keys.mjs or DNS broken — ${new Date().toISOString().slice(0,10)}`;
+            const alreadyOpen = existing.data.some(i => i.title.startsWith('[checker]'));
+            if (!alreadyOpen) {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body: 'The weekly checker smoke test failed. Check the [workflow run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.',
+                labels: ['bug'],
+              });
+            }

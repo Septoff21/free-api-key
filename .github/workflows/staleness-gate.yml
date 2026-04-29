@@ -1,0 +1,38 @@
+name: Staleness Gate
+
+# Block PRs that touch provider data when any provider's last_verified
+# is more than 90 days old. Forces freshness before merging.
+
+on:
+  pull_request:
+    paths:
+      - "providers.json"
+      - "docs/**/*.md"
+      - "data/evidence/**"
+  push:
+    branches: [main, master]
+    paths:
+      - "providers.json"
+
+permissions:
+  contents: read
+
+jobs:
+  check-staleness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check staleness (90-day gate)
+        run: node scripts/check-staleness.mjs --max-age 90
+
+      - name: Check aging warning (60-day warning)
+        continue-on-error: true
+        run: node scripts/check-staleness.mjs --max-age 60 --warn-only

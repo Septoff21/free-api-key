@@ -1,0 +1,98 @@
+name: Link Check
+
+# Weekly: scan all Markdown files for dead links.
+# Opens an issue listing every dead URL found.
+
+on:
+  schedule:
+    - cron: "0 7 * * 1"   # Every Monday at 07:00 UTC (before other Monday jobs)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install lychee
+        run: |
+          curl -sSLf https://github.com/lycheeverse/lychee/releases/latest/download/lychee-x86_64-unknown-linux-gnu.tar.gz \
+            | tar -xz --wildcards 'lychee' -C /usr/local/bin
+          lychee --version
+
+      - name: Check links
+        id: lychee
+        continue-on-error: true
+        run: |
+          lychee \
+            --no-progress \
+            --exclude "localhost" \
+            --exclude "127.0.0.1" \
+            --exclude "host.docker.internal" \
+            --exclude "models.github.ai" \
+            --exclude "YOUR_USERNAME" \
+            --exclude-path ".git" \
+            --timeout 20 \
+            --max-retries 2 \
+            --format markdown \
+            --output /tmp/lychee-report.md \
+            "**/*.md" "**/*.json" \
+            2>&1 | tee /tmp/lychee-stdout.txt
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Open issue for dead links
+        if: steps.lychee.outputs.exit_code != '0'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let report = '';
+            try { report = fs.readFileSync('/tmp/lychee-report.md', 'utf8'); } catch(e) {}
+
+            // Truncate if too long
+            if (report.length > 6000) report = report.slice(0, 6000) + '\n\n*(truncated — see workflow run for full report)*';
+
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'dead-link',
+            });
+
+            const title = `[links] Dead links found — ${new Date().toISOString().slice(0,10)}`;
+            const alreadyOpen = existing.data.find(i => i.title.startsWith('[links]'));
+
+            const body = [
+              `## Dead Links Detected — ${new Date().toISOString().slice(0,10)}`,
+              '',
+              'The weekly link checker found broken URLs. Please review and update.',
+              '',
+              '<details><summary>Full report</summary>',
+              '',
+              report || '*(report file not found — check workflow logs)*',
+              '',
+              '</details>',
+              '',
+              `[View workflow run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})`,
+            ].join('\n');
+
+            if (alreadyOpen) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: alreadyOpen.number,
+                body,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: ['dead-link'],
+              });
+            }

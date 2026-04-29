@@ -1,0 +1,77 @@
+name: 数据过期 / Data Outdated
+description: 某个 provider 的限速、模型、隐私政策等数据已变 / A provider's rate limits, models, or privacy policy has changed
+labels: ["data-update-needed"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢报告数据过期！请尽量提供官方来源链接。
+        Thanks for reporting outdated data! Please provide official source links where possible.
+
+  - type: dropdown
+    id: provider
+    attributes:
+      label: Provider
+      description: 哪个 Provider / Which provider
+      options:
+        - openrouter
+        - gemini
+        - groq
+        - cerebras
+        - github_models
+        - mistral
+        - cloudflare
+        - ollama
+        - other (specify in description)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: data_type
+    attributes:
+      label: 数据类型 / Data Type
+      description: 哪类数据发生了变化 / What kind of data changed
+      options:
+        - rate-limits (RPM / RPD / TPM / TPD)
+        - models (新增/下线/改名)
+        - pricing (付费限额变动)
+        - privacy-policy (隐私条款变化)
+        - base-url (API 端点变更)
+        - auth (认证方式变化)
+        - other
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_doc
+    attributes:
+      label: 文档当前说 / Current Doc Says
+      description: 复制项目文档中的相关内容
+      placeholder: "例：免费层每分钟 30 请求"
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual_value
+    attributes:
+      label: 官方实际说 / Official Source Says
+      description: 复制官方页面中的实际内容
+      placeholder: "例：免费层每分钟 20 请求"
+    validations:
+      required: true
+
+  - type: input
+    id: source_url
+    attributes:
+      label: 官方来源 URL / Official Source URL
+      placeholder: "https://..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: 补充说明 / Additional Notes
+      description: 何时发现？截图？其他上下文
+    validations:
+      required: false

@@ -1,0 +1,106 @@
+name: Freshness Check
+
+# Weekly: fetch official provider pages, compare SHA-256 hashes against
+# stored snapshots. Open an issue if any page changed.
+
+on:
+  schedule:
+    - cron: "0 8 * * 1"   # Every Monday at 08:00 UTC (1h before smoke test)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  freshness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch snapshots and detect changes
+        id: snapshots
+        run: |
+          node scripts/fetch-snapshots.mjs --output data/snapshots/ 2>&1 | tee /tmp/snapshot-report.txt
+          # changed_providers is set as comma-separated list by the script
+          changed=$(grep "^CHANGED:" /tmp/snapshot-report.txt | sed 's/^CHANGED://' | tr '\n' ',' | sed 's/,$//')
+          echo "changed_providers=${changed}" >> "$GITHUB_OUTPUT"
+
+      - name: Commit updated snapshots
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/snapshots/
+          git diff --staged --quiet || git commit -m "chore(snapshots): update page hashes $(date -u +%Y-%m-%d) [skip ci]"
+          git push
+
+      - name: Check staleness
+        continue-on-error: true
+        run: node scripts/check-staleness.mjs --max-age 60 --warn-only
+
+      - name: Open issue for changed pages
+        if: steps.snapshots.outputs.changed_providers != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('/tmp/snapshot-report.txt', 'utf8');
+            const changed = '${{ steps.snapshots.outputs.changed_providers }}'.split(',').filter(Boolean);
+
+            const body = [
+              `## Official Page Changes Detected — ${new Date().toISOString().slice(0,10)}`,
+              '',
+              '**Changed providers:** ' + changed.map(p => `\`${p}\``).join(', '),
+              '',
+              '### What this means',
+              'The SHA-256 hash of one or more provider pages changed since last week.',
+              'This may indicate a rate limit change, new model, policy update, or site restructure.',
+              '',
+              '### What to do',
+              '1. Visit the provider\'s official page (linked in each provider doc)',
+              '2. Compare with current `providers.json` data',
+              '3. Update `providers.json` and `last_verified` if data changed',
+              '4. Update corresponding `docs/zh/0X-*.md` and `docs/en/0X-*.md`',
+              '5. Close this issue once updated',
+              '',
+              '<details><summary>Snapshot report</summary>',
+              '',
+              '```',
+              report.slice(0, 3000),
+              '```',
+              '</details>',
+            ].join('\n');
+
+            // Check for existing open freshness issue
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'data-update-needed',
+            });
+
+            const title = `[freshness] Provider pages changed — ${new Date().toISOString().slice(0,10)}`;
+
+            if (existing.data.length > 0 && existing.data[0].title.startsWith('[freshness]')) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.data[0].number,
+                body,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: ['data-update-needed'],
+              });
+            }
