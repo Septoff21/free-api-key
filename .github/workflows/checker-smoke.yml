@@ -59,7 +59,7 @@ jobs:
 
       - name: Open issue if checker script is broken
         if: failure()
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const existing = await github.rest.issues.listForRepo({
