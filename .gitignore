@@ -60,3 +60,10 @@ logs/
 # data/health/ is tracked (health logs committed by CI)
 # data/evidence/ is tracked (human-written evidence files)
 # Nothing to ignore here; keep explicit
+
+# ─── VitePress build cache ────────────────────────────────────────────────────
+.vitepress/cache/
+.vitepress/dist/
+
+# ─── Ghost files from Windows shell variable expansion bug ────────────────────
+data/health$p.jsonl
