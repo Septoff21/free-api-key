@@ -5,11 +5,39 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.0.0] - 2026-04-29
 
 ### Added
 
-- **Phase 07** — Client integration guides (7 clients × bilingual):
+- **Phase 09** — Non-developer illustrated tutorials:
+  - `for-non-devs/zh/00-从零开始.md` — 5-step beginner guide (no coding needed); provider picker table, Chatbox setup, FAQ with 429/401/proxy solutions
+  - `for-non-devs/zh/01-openrouter图文.md` — OpenRouter signup walkthrough with screenshot placeholders
+  - `for-non-devs/zh/02-gemini-tuweng.md` — Gemini/AI Studio walkthrough with screenshot placeholders and privacy notice
+  - Note: 11 screenshot placeholders marked `[截图占位]` for maintainer to fill with real screenshots
+
+- **Phase 10** — Maintenance automation:
+  - `.github/workflows/staleness-gate.yml` — PR gate: fails if any provider `last_verified` > 90 days
+  - `.github/workflows/freshness-check.yml` — Weekly SHA-256 snapshot diff of official pages → auto-issue on change
+  - `.github/workflows/checker-smoke.yml` — Weekly dry-run of check-keys.mjs + DNS resolve check
+  - `.github/workflows/link-check.yml` — Weekly lychee dead-link scan → auto-issue
+  - `.github/ISSUE_TEMPLATE/` — 4 structured issue templates (data-outdated, new-provider, client-broken, config)
+  - `.github/PULL_REQUEST_TEMPLATE.md` — Mandatory checklist (last_verified, sources table, CHANGELOG)
+  - `.github/dependabot.yml` — Weekly npm + monthly GitHub Actions updates
+  - `scripts/check-staleness.mjs` — Local staleness check with --max-age / --warn-only / --json
+  - `scripts/fetch-snapshots.mjs` — Fetches provider pages, stores SHA-256 snapshots, detects changes
+  - `scripts/check-links.mjs` — Scans Markdown for HTTP links, HEAD-checks each URL
+  - `docs/zh/96-freshness-policy.md` + `docs/en/96-freshness-policy.md` — Data freshness policy and update process
+
+- **Phase 12** — Real key smoke testing CI:
+  - `.github/workflows/real-key-smoke.yml` — Weekly cron (Mon 09:00 UTC) + manual dispatch; repo-fork guard; auto-commits health logs; opens issue on failure
+  - `scripts/test-real-keys.mjs` — 1-token probe runner for 8 providers; skip on missing keys; --dry-run / --append-logs
+  - `scripts/generate-status-badge.mjs` — shields.io endpoint JSON; green=8/8, yellow=7/8, red≤5/8
+  - `data/health/` — `_index.json` summary, `badge.json`, 8× `.jsonl` per-provider history
+  - `docs/zh/97-status.md` + `docs/en/97-status.md` — Public status page with probe table
+  - `docs/zh/95-maintenance.md` + `docs/en/95-maintenance.md` — Maintainer handbook
+  - `README.md` / `README.en.md` — Health badge + MIT badge added
+
+- **Phase 07** — Client integration guides (7 clients × bilingual): — Client integration guides (7 clients × bilingual):
   - `docs/zh/clients/01-opencode.md` + `docs/en/clients/01-opencode.md` — opencode CLI: JSON config, all 8 providers, LiteLLM proxy integration, env-var key management
   - `docs/zh/clients/02-cline.md` + `docs/en/clients/02-cline.md` — Cline VS Code extension: OpenRouter/Gemini/Ollama setup, agentic task tips, settings.json reference
   - `docs/zh/clients/03-continue.md` + `docs/en/clients/03-continue.md` — Continue (VS Code + JetBrains): multi-model config, Codestral FIM, Ollama local autocomplete, @codebase indexing
@@ -70,4 +98,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `configs/.env.example` — environment variable template for all 8 providers
   - `docs/zh/` + `docs/en/` — directory stubs for bilingual documentation
 
-[Unreleased]: https://github.com/YOUR_USERNAME/free-api-key/compare/v0.1.0...HEAD
+[1.0.0]: https://github.com/YOUR_USERNAME/free-api-key/compare/v0.1.0...v1.0.0

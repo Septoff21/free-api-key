@@ -5,6 +5,22 @@
 
 ---
 
+## Phase 09 — Non-Dev Tutorials + v1.0.0 Release — 2026-04-29 — claude-sonnet-4-6
+
+3 tutorial files in for-non-devs/zh/: beginner guide (5-step, FAQ, provider picker), OpenRouter signup walkthrough, Gemini AI Studio walkthrough. 11 screenshot placeholders for maintainer. CHANGELOG moved to [1.0.0]. providers.json → 1.0.0. git tag v1.0.0.
+
+## Phase 10 — Maintenance Automation — 2026-04-29 — claude-sonnet-4-6
+
+4 GitHub Actions workflows: staleness-gate, freshness-check (SHA-256 page diff), checker-smoke, link-check. 4 issue templates + PR template + dependabot. Scripts: check-staleness.mjs, fetch-snapshots.mjs, check-links.mjs. Docs: 96-freshness-policy.md (bilingual).
+
+## Phase 12 — Real Key Smoke Testing CI — 2026-04-29 — claude-sonnet-4-6
+
+Weekly smoke CI (real-key-smoke.yml), 1-token probes, skip on missing keys, auto-commit health logs, issue on failure. test-real-keys.mjs + generate-status-badge.mjs. data/health/ with _index.json + badge.json + 8 JSONL logs. 97-status.md + 95-maintenance.md (bilingual). Health badge in README.
+
+## Phase 07 — Client Integration Guides — 2026-04-29 — claude-sonnet-4-6
+
+7 bilingual client guides (opencode, Cline, Continue, Cursor, LibreChat, Open WebUI, Chatbox). 5 English recipe mirrors. Each guide: provider params table, config examples, 5 pitfalls, LiteLLM proxy notes.
+
 ## Phase 08 — Recipes — 2026-04-28 — claude-sonnet-4-7
 
 5 scenario recipes committed: agent-loop (ReAct tool-use loop with provider swap), vision-analyze (universal image helper + OCR/chart/screenshot presets), litellm-router (YAML config + Python Router API + proxy mode), image-generation (Cloudflare FLUX+SDXL + batch + neuron budget), quota-maximizer (priority routing + semantic cache + batch merging). LiteLLM config covers 6 model aliases with fallback chains.
