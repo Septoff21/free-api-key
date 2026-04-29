@@ -76,7 +76,7 @@ jobs:
       # Only runs when failures are detected.
       - name: Open issue on failure
         if: steps.probe.outputs.failed_count != '0'
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const fs = require('fs');
