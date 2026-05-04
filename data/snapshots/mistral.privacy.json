@@ -1,0 +1,10 @@
+{
+  "provider": "mistral",
+  "page_type": "privacy",
+  "url": "https://mistral.ai/privacy/",
+  "fetched_at": "2026-05-04T10:12:29.376Z",
+  "sha256": "ab2f0eb578b047778def306f3fbd58760e4fe4fa529819a8059a59c76ce9da48",
+  "size_bytes": 111679,
+  "prev_sha256": null,
+  "changed": null
+}

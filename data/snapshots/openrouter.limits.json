@@ -1,0 +1,10 @@
+{
+  "provider": "openrouter",
+  "page_type": "limits",
+  "url": "https://openrouter.ai/docs/api/reference/limits",
+  "fetched_at": "2026-05-04T10:12:24.556Z",
+  "sha256": "e016f152656569fb07779744b520ee56feaeebb399f8070163b5be26a8ae9773",
+  "size_bytes": 4176857,
+  "prev_sha256": null,
+  "changed": null
+}

@@ -1,0 +1,10 @@
+{
+  "provider": "cloudflare",
+  "page_type": "privacy",
+  "url": "https://www.cloudflare.com/privacypolicy/",
+  "fetched_at": "2026-05-04T10:12:29.736Z",
+  "sha256": "f621b188850f822b40123401e9bc2c1f7cd08c71aff52e9abd00eeb5159e33b6",
+  "size_bytes": 463777,
+  "prev_sha256": null,
+  "changed": null
+}

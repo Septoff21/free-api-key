@@ -1,0 +1,10 @@
+{
+  "provider": "cerebras",
+  "page_type": "privacy",
+  "url": "https://cerebras.ai/privacy-policy",
+  "fetched_at": "2026-05-04T10:12:26.860Z",
+  "sha256": "b31bcb2e33ee630330d8f9bc08996fbc176605fb437754f78f4c9a0e3efdeebb",
+  "size_bytes": 261009,
+  "prev_sha256": null,
+  "changed": null
+}

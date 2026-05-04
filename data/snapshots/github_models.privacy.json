@@ -1,0 +1,10 @@
+{
+  "provider": "github_models",
+  "page_type": "privacy",
+  "url": "https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement",
+  "fetched_at": "2026-05-04T10:12:28.220Z",
+  "sha256": "c4665213f2ea51e9cb07b463e2d9de5030f6861fbaad175a41b7eb86dd93bda6",
+  "size_bytes": 221565,
+  "prev_sha256": null,
+  "changed": null
+}

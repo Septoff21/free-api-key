@@ -1,0 +1,10 @@
+{
+  "provider": "ollama",
+  "page_type": "privacy",
+  "url": "https://ollama.com/privacy",
+  "fetched_at": "2026-05-04T10:12:30.034Z",
+  "sha256": "2e3e0e8f522d5ed972d0a2ab56327693a46b76ebe25f90abb8f211fefdefdf07",
+  "size_bytes": 28002,
+  "prev_sha256": null,
+  "changed": null
+}

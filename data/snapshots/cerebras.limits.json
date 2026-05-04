@@ -1,0 +1,10 @@
+{
+  "provider": "cerebras",
+  "page_type": "limits",
+  "url": "https://inference-docs.cerebras.ai/support/rate-limits",
+  "fetched_at": "2026-05-04T10:12:26.207Z",
+  "sha256": "f62bce487128b4f4971bcd6a0883dee62a39b2d9df4660070034193f8c904357",
+  "size_bytes": 388184,
+  "prev_sha256": null,
+  "changed": null
+}

@@ -1,0 +1,10 @@
+{
+  "provider": "groq",
+  "page_type": "privacy",
+  "url": "https://groq.com/privacy-policy/",
+  "fetched_at": "2026-05-04T10:12:25.979Z",
+  "sha256": "bbe9975e5b75738e082446f8b589a8f36a567aa7306af5902ace86d990c56c34",
+  "size_bytes": 922045,
+  "prev_sha256": null,
+  "changed": null
+}
