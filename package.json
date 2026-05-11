@@ -20,6 +20,6 @@
   "devDependencies": {
     "ajv": "^8.20.0",
     "vitepress": "^1.6.4",
-    "vue": "^3.5.33"
+    "vue": "^3.5.34"
   }
 }
