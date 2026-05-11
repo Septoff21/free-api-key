@@ -2,9 +2,9 @@
   "provider": "github_models",
   "page_type": "limits",
   "url": "https://docs.github.com/en/github-models/prototyping-with-ai-models",
-  "fetched_at": "2026-05-04T10:12:27.551Z",
-  "sha256": "a3281b3b40f738a2147d3658a8ab51280d9e141932cab4ed157f3ac2b4b5e13e",
-  "size_bytes": 134438,
-  "prev_sha256": null,
-  "changed": null
+  "fetched_at": "2026-05-11T11:17:08.919Z",
+  "sha256": "b6495d26838b73519227be9cb65f84adad3e574330765c70e0ba04a3b87f7905",
+  "size_bytes": 133965,
+  "prev_sha256": "a3281b3b40f738a2147d3658a8ab51280d9e141932cab4ed157f3ac2b4b5e13e",
+  "changed": true
 }

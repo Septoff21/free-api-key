@@ -2,9 +2,9 @@
   "provider": "groq",
   "page_type": "privacy",
   "url": "https://groq.com/privacy-policy/",
-  "fetched_at": "2026-05-04T10:12:25.979Z",
-  "sha256": "bbe9975e5b75738e082446f8b589a8f36a567aa7306af5902ace86d990c56c34",
-  "size_bytes": 922045,
-  "prev_sha256": null,
-  "changed": null
+  "fetched_at": "2026-05-11T11:17:08.343Z",
+  "sha256": "036c0b9ad8a01ec9e9dd9d6257f9106ea4f8a3c0515e9227377324116d0008d4",
+  "size_bytes": 975292,
+  "prev_sha256": "bbe9975e5b75738e082446f8b589a8f36a567aa7306af5902ace86d990c56c34",
+  "changed": true
 }
