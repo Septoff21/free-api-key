@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-11T12:16:33.190Z",
+  "generated_at": "2026-05-18T12:38:42.652Z",
   "summary": {
     "ok": 0,
     "failed": 0,
@@ -14,7 +14,7 @@
       "error_class": null,
       "skipped": true,
       "probe_kind": "minimal_chat",
-      "last_run": "2026-05-11T12:16:33.189Z"
+      "last_run": "2026-05-18T12:38:42.651Z"
     },
     "gemini": {
       "ok": null,
@@ -23,7 +23,7 @@
       "error_class": null,
       "skipped": true,
       "probe_kind": "minimal_chat",
-      "last_run": "2026-05-11T12:16:33.189Z"
+      "last_run": "2026-05-18T12:38:42.651Z"
     },
     "groq": {
       "ok": null,
@@ -32,7 +32,7 @@
       "error_class": null,
       "skipped": true,
       "probe_kind": "minimal_chat",
-      "last_run": "2026-05-11T12:16:33.189Z"
+      "last_run": "2026-05-18T12:38:42.651Z"
     },
     "cerebras": {
       "ok": null,
@@ -41,7 +41,7 @@
       "error_class": null,
       "skipped": true,
       "probe_kind": "minimal_chat",
-      "last_run": "2026-05-11T12:16:33.190Z"
+      "last_run": "2026-05-18T12:38:42.651Z"
     },
     "github_models": {
       "ok": null,
@@ -50,7 +50,7 @@
       "error_class": null,
       "skipped": true,
       "probe_kind": "minimal_chat",
-      "last_run": "2026-05-11T12:16:33.190Z"
+      "last_run": "2026-05-18T12:38:42.651Z"
     },
     "mistral": {
       "ok": null,
@@ -59,7 +59,7 @@
       "error_class": null,
       "skipped": true,
       "probe_kind": "minimal_chat",
-      "last_run": "2026-05-11T12:16:33.190Z"
+      "last_run": "2026-05-18T12:38:42.651Z"
     },
     "cloudflare": {
       "ok": null,
@@ -68,7 +68,7 @@
       "error_class": null,
       "skipped": true,
       "probe_kind": "minimal_chat",
-      "last_run": "2026-05-11T12:16:33.190Z"
+      "last_run": "2026-05-18T12:38:42.651Z"
     },
     "ollama": {
       "ok": null,
@@ -77,7 +77,7 @@
       "error_class": null,
       "skipped": true,
       "probe_kind": "local_tags",
-      "last_run": "2026-05-11T12:16:33.190Z"
+      "last_run": "2026-05-18T12:38:42.651Z"
     }
   }
 }
