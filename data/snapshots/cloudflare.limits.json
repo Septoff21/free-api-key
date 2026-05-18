@@ -2,9 +2,9 @@
   "provider": "cloudflare",
   "page_type": "limits",
   "url": "https://developers.cloudflare.com/workers-ai/platform/limits/",
-  "fetched_at": "2026-05-11T11:17:09.859Z",
-  "sha256": "c1b8559f0f9867a3da57b34a29d3118810397a0a0a410a56582b5f67d99ce325",
-  "size_bytes": 125990,
-  "prev_sha256": "938cab3b44d6d8a67cd8138635485237aadbd52b1a2df47244489206d5592ffa",
+  "fetched_at": "2026-05-18T11:42:47.437Z",
+  "sha256": "e0c300972c661ff5c4914f9135ebed95d9d50361cb1388c2783498ce0c2bbf98",
+  "size_bytes": 126376,
+  "prev_sha256": "c1b8559f0f9867a3da57b34a29d3118810397a0a0a410a56582b5f67d99ce325",
   "changed": true
 }

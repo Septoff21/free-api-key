@@ -2,9 +2,9 @@
   "provider": "ollama",
   "page_type": "limits",
   "url": "https://ollama.com",
-  "fetched_at": "2026-05-11T11:17:10.028Z",
-  "sha256": "0a47df9e5c38dade2b23b69fe8e6228bd76a24e6ad6bab97a3b8cff4dafdfcee",
+  "fetched_at": "2026-05-18T11:42:47.909Z",
+  "sha256": "cfb7144954aef01623b30d32d8463e7dc6940dc6fa539579724e59c206f62cfb",
   "size_bytes": 24234,
   "prev_sha256": "0a47df9e5c38dade2b23b69fe8e6228bd76a24e6ad6bab97a3b8cff4dafdfcee",
-  "changed": false
+  "changed": true
 }

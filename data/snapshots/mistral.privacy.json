@@ -2,9 +2,9 @@
   "provider": "mistral",
   "page_type": "privacy",
   "url": "https://mistral.ai/privacy/",
-  "fetched_at": "2026-05-11T11:17:09.809Z",
-  "sha256": "bfef8ebe8502d17364d31cfe0661937e3ff2f20c533f6bf6673a83e7fd609e30",
-  "size_bytes": 111636,
-  "prev_sha256": "ab2f0eb578b047778def306f3fbd58760e4fe4fa529819a8059a59c76ce9da48",
+  "fetched_at": "2026-05-18T11:42:47.362Z",
+  "sha256": "56b6ff5221fdde6696a3d5ef2663cc7432885843a65f6e5c756f05582bbecce9",
+  "size_bytes": 111679,
+  "prev_sha256": "bfef8ebe8502d17364d31cfe0661937e3ff2f20c533f6bf6673a83e7fd609e30",
   "changed": true
 }

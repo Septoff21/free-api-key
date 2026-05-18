@@ -2,9 +2,9 @@
   "provider": "gemini",
   "page_type": "limits",
   "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
-  "fetched_at": "2026-05-11T11:17:07.695Z",
-  "sha256": "3496521e529d8c73f15692cdf767c57dd220dbd285ed93f1bd69ad4d2ceee537",
-  "size_bytes": 96899,
-  "prev_sha256": "a9a988875d581e88ea312400c455969b0ab1c70205127f5c6466c6f40ab2e752",
+  "fetched_at": "2026-05-18T11:42:45.117Z",
+  "sha256": "a8909d3f671e9640bd2b75956b8e1627469e17627c40d85c5b54b6cbc3378d15",
+  "size_bytes": 113123,
+  "prev_sha256": "3496521e529d8c73f15692cdf767c57dd220dbd285ed93f1bd69ad4d2ceee537",
   "changed": true
 }

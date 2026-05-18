@@ -2,9 +2,9 @@
   "provider": "cerebras",
   "page_type": "privacy",
   "url": "https://cerebras.ai/privacy-policy",
-  "fetched_at": "2026-05-11T11:17:08.680Z",
-  "sha256": "b3ffc415906db094952f899ca6047fc4d7029b897c173e65b6020284b6e92621",
-  "size_bytes": 261057,
-  "prev_sha256": "b31bcb2e33ee630330d8f9bc08996fbc176605fb437754f78f4c9a0e3efdeebb",
+  "fetched_at": "2026-05-18T11:42:46.409Z",
+  "sha256": "0500d5ec963a22795c924551e64904268007ab9f81c0a540c696d04b8602a0db",
+  "size_bytes": 262715,
+  "prev_sha256": "b3ffc415906db094952f899ca6047fc4d7029b897c173e65b6020284b6e92621",
   "changed": true
 }

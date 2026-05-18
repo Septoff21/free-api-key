@@ -2,9 +2,9 @@
   "provider": "groq",
   "page_type": "limits",
   "url": "https://console.groq.com/docs/rate-limits",
-  "fetched_at": "2026-05-11T11:17:08.170Z",
-  "sha256": "16d78d3736f6c3e75da26827403201cb2bd99299ee5acd8312a7039fe0f441bc",
+  "fetched_at": "2026-05-18T11:42:45.727Z",
+  "sha256": "b0f4c271f9b35c0935d95c87b3a9ea710edc4a5913cc6c19da81dca1150cde26",
   "size_bytes": 337870,
-  "prev_sha256": "f5661040d409ec100f94657ca719f1395f067c0a04238792898a9ef7cc9132af",
+  "prev_sha256": "16d78d3736f6c3e75da26827403201cb2bd99299ee5acd8312a7039fe0f441bc",
   "changed": true
 }

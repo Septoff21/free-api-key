@@ -2,9 +2,9 @@
   "provider": "openrouter",
   "page_type": "privacy",
   "url": "https://openrouter.ai/privacy",
-  "fetched_at": "2026-05-11T11:17:07.250Z",
-  "sha256": "97572ddee70afdb937173918f8195fc346e2b68c52a0dd5c398353fddb012a97",
-  "size_bytes": 177713,
-  "prev_sha256": "9671c2e6af7237486a3e0e6120f7c5fdd05925870eb9b26a732a68bd537d1d15",
+  "fetched_at": "2026-05-18T11:42:44.568Z",
+  "sha256": "704d1b55a874a5f4fb216bc4d69fc37b7badeaa5c2d20d0fc7d217039c0d5bb6",
+  "size_bytes": 191662,
+  "prev_sha256": "97572ddee70afdb937173918f8195fc346e2b68c52a0dd5c398353fddb012a97",
   "changed": true
 }

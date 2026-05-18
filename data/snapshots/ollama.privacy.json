@@ -2,9 +2,9 @@
   "provider": "ollama",
   "page_type": "privacy",
   "url": "https://ollama.com/privacy",
-  "fetched_at": "2026-05-11T11:17:10.101Z",
-  "sha256": "2e3e0e8f522d5ed972d0a2ab56327693a46b76ebe25f90abb8f211fefdefdf07",
+  "fetched_at": "2026-05-18T11:42:47.977Z",
+  "sha256": "7c46786dbc22e0997d9b0571e8c04d32445bc36d10b8a525417ed5bff8ece7da",
   "size_bytes": 28002,
   "prev_sha256": "2e3e0e8f522d5ed972d0a2ab56327693a46b76ebe25f90abb8f211fefdefdf07",
-  "changed": false
+  "changed": true
 }

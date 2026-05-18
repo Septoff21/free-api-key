@@ -2,9 +2,9 @@
   "provider": "github_models",
   "page_type": "privacy",
   "url": "https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement",
-  "fetched_at": "2026-05-11T11:17:08.930Z",
-  "sha256": "b02d564d388e41e14130b7590094a66cfddef5ab7f898a1e2c9432801d277b3d",
-  "size_bytes": 221142,
-  "prev_sha256": "c4665213f2ea51e9cb07b463e2d9de5030f6861fbaad175a41b7eb86dd93bda6",
+  "fetched_at": "2026-05-18T11:42:46.576Z",
+  "sha256": "ade0f23db38543c25cfce8134395dae2d258b12e4f18e663aba9986d6d39a787",
+  "size_bytes": 221384,
+  "prev_sha256": "b02d564d388e41e14130b7590094a66cfddef5ab7f898a1e2c9432801d277b3d",
   "changed": true
 }

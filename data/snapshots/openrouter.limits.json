@@ -2,9 +2,9 @@
   "provider": "openrouter",
   "page_type": "limits",
   "url": "https://openrouter.ai/docs/api/reference/limits",
-  "fetched_at": "2026-05-11T11:17:07.154Z",
-  "sha256": "155fd6247d40e3bccc62a66e571a263919b2d48d2a1a753d48fa45432581bf89",
-  "size_bytes": 4320430,
-  "prev_sha256": "e016f152656569fb07779744b520ee56feaeebb399f8070163b5be26a8ae9773",
+  "fetched_at": "2026-05-18T11:42:44.468Z",
+  "sha256": "20f374660207409197bf18b5eaca502875bbd0d874ececda11313d33b89a23d0",
+  "size_bytes": 965938,
+  "prev_sha256": "155fd6247d40e3bccc62a66e571a263919b2d48d2a1a753d48fa45432581bf89",
   "changed": true
 }

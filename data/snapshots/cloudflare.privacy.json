@@ -2,9 +2,9 @@
   "provider": "cloudflare",
   "page_type": "privacy",
   "url": "https://www.cloudflare.com/privacypolicy/",
-  "fetched_at": "2026-05-11T11:17:09.960Z",
-  "sha256": "4c7d20700f0d59e1af44d2dab95abc9b95e4d3e6d70f5c2a3367b1ace590c7f6",
-  "size_bytes": 471918,
-  "prev_sha256": "f621b188850f822b40123401e9bc2c1f7cd08c71aff52e9abd00eeb5159e33b6",
+  "fetched_at": "2026-05-18T11:42:47.749Z",
+  "sha256": "8c4036c6ef1cb1e5ce5449e65aa4d5f5bdb8dc44e85c5a159bb9a98d61e1899e",
+  "size_bytes": 472085,
+  "prev_sha256": "4c7d20700f0d59e1af44d2dab95abc9b95e4d3e6d70f5c2a3367b1ace590c7f6",
   "changed": true
 }
